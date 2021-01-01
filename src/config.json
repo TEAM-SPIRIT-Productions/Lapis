@@ -7,8 +7,8 @@
 
   "SERVER_NAME": "ExampleMS",
   "SERVER_WEBSITE": "https://gtop100.com/topsites/MapleStory/",
-  "SERVER_IMG": "URL of an artwork/picture",
-  "SERVER_COLOR": "0xADD8E6",
+  "SERVER_IMG": "https://cdn.discordapp.com/attachments/746519006961336370/794487344325591050/68747470733a2f2f692e696d6775722e636f6d2f4571634d39354a2e706e67.png",
+  "SERVER_COLOR": "0x026619c",
 
   "USE_DEFAULT_DB": true,
   "DATABASE_NAME": "kms_316",
