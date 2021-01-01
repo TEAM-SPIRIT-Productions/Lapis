@@ -21,3 +21,4 @@ You will need to generate your `VENV` prior to use. Refer to [Lazuli's Wiki](htt
 NOTE: Please do **not** use Python versions older than 3.6 because:
 1. f-strings are used
 2. dictionaries are assumed to be ordered
+3. Discord.py library will not work past 3.6
