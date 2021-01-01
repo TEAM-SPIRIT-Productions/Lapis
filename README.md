@@ -16,9 +16,9 @@ You will need to generate your `VENV` prior to use. Refer to [Lazuli's Wiki](htt
 *Inherited from Lazuli*
 |  | Target Minimum | Target Maximum |
 |---|---|---|
-| Python | 3.6.12 | 3.9.0 |
+| Python | 3.6.12 | 3.6.12 |
 
-NOTE: Please do **not** use Python versions older than 3.6 because:
-1. f-strings are used
-2. dictionaries are assumed to be ordered
-3. Discord.py library will not work past 3.6
+NOTE: Please do **not** use Python versions other than 3.6 because:
+1. f-strings are used - *requires 3.6 or newer*
+2. dictionaries are assumed to be ordered - *requires 3.6 or newer*
+3. Discord.py library is used - *requires 3.6 or older*
