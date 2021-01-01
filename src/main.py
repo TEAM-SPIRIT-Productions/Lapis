@@ -5,10 +5,11 @@
 import discord
 from discord.ext import commands
 import json
+import os
 
 from discord.ext.commands import has_permissions
 
-with open('config.json', 'r') as f:
+with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as f:
     config = json.load(f)
 
 bot = commands.Bot(command_prefix=config['COMMAND_PREFIX'])
