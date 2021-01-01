@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Custom
+src/config.json
+/shelf/
+/workspace.xml
+.idea

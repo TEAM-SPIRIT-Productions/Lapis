@@ -1,3 +1,19 @@
 {
+  "BOT_TOKEN": "BOT_TOKEN_HERE",
+  "COMMAND_PREFIX": "!",
 
+  "ADD_ROLE": false,
+  "ROLE_TO_ADD": "ROLE_ID",
+
+  "SERVER_NAME": "ExampleMS",
+  "SERVER_WEBSITE": "https://gtop100.com/topsites/MapleStory/",
+  "SERVER_IMG": "URL of an artwork/picture",
+  "SERVER_COLOR": "0xADD8E6",
+
+  "USE_DEFAULT_DB": true,
+  "DATABASE_NAME": "kms_316",
+  "DATABASE_PASS": "",
+  "DATABASE_USER": "root",
+  "DATABASE_HOST": "localhost",
+  "DATABASE_PORT": 3306
 }
