@@ -1,0 +1,2 @@
+lazuli==0.0.7
+mysql-connector-python-rf==2.2.2
