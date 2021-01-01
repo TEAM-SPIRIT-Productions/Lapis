@@ -15,6 +15,10 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as f
 bot = commands.Bot(command_prefix=config['COMMAND_PREFIX'])
 # remove the default help command so we can format it nicer
 bot.remove_command('help')
+print("Loading various commands....")
+# Load all commands
+bot.load_extension("commands.user_commands")
+bot.load_extension("commands.admin_commands")
 
 
 @bot.event
@@ -88,11 +92,7 @@ async def help_command(ctx):
 
 
 def main():
-    print("Loading various commands and bot....")
-    # Load all commands
-    bot.load_extension("commands.user_commands")
-    bot.load_extension("commands.admin_commands")
-
+    print("Loading bot...")
     bot.run(config['BOT_TOKEN'])
 
 
