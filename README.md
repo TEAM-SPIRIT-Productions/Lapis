@@ -6,7 +6,7 @@ Lapis is inspired by the [MapleDiscBot](https://github.com/Bratah123/MapleDiscBo
 Lapis accesses character and inventory attributes in [AzureMSv316](https://github.com/SoulGirlJP/AzureV316)-based databases using the [Lazuli API](https://team-spirit-productions.github.io/Lazuli/reference/lazuli/).  
 
 
-#### Current Status: **Early Development**  ![20%](https://progress-bar.dev/20)
+#### Current Status: **Early Development**  ![50%](https://progress-bar.dev/50)
 
 ## Documentation:
 Kindly direct any problems or questions to the [Issues](https://github.com/TEAM-SPIRIT-Productions/Lapis/issues) page.  
