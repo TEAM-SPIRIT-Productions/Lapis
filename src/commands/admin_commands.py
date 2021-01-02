@@ -30,10 +30,163 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
                 port=self.config['DATABASE_PORT'],
             )
 
-    @commands.command(name='hello_admin', pass_context=True)
+    def get_server_color(self):
+        """
+        Converting the hex string in config file to a hex int for color embed
+        :return: int
+        """
+        return int(self.config['SERVER_COLOR'], 16) + 0x200
+
+    @commands.command(name='givemeso', pass_context=True)
     @has_permissions(administrator=True)
-    async def hello_admin(self, ctx, *, member: discord.Member = None):
-        await ctx.send('Hello admin!')
+    async def give_meso(self, ctx):
+        args = ctx.message.content.split(" ")
+        if len(args) < 3:
+            await ctx.send("Please provide all necessary arguments! !givemeso <name> <amount>")
+            return
+        player_name = args[1]
+        amount = int(args[2])
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        if character.account.is_online():
+            await ctx.send("Make sure the character is offline before giving mesos!")
+            return
+
+        embed = discord.Embed(
+            title="Mesos",
+            color=self.get_server_color(),
+            description=f"Successfully gave {character.name} {format_num(amount)} mesos."
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        new_amount = amount + int(character.meso)
+        character.meso = new_amount
+        await ctx.send(embed=embed)
+
+    @commands.command(name='givedp', pass_context=True)
+    @has_permissions(administrator=True)
+    async def give_dp(self, ctx):
+        args = ctx.message.content.split(" ")
+        if len(args) < 3:
+            await ctx.send("Please provide all necessary arguments! !givedp <name> <amount>")
+            return
+        player_name = args[1]
+        amount = int(args[2])
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        if character.account.is_online():
+            await ctx.send("Make sure the character is offline before giving donation points!")
+            return
+
+        embed = discord.Embed(
+            title="Donation Points",
+            color=self.get_server_color(),
+            description=f"Successfully gave {character.name} {format_num(amount)} donation points."
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        new_amount = amount + int(character.account.dp)
+        character.account.dp = new_amount
+        await ctx.send(embed=embed)
+
+    @commands.command(name='givevp', pass_context=True)
+    @has_permissions(administrator=True)
+    async def give_vp(self, ctx):
+        args = ctx.message.content.split(" ")
+        if len(args) < 3:
+            await ctx.send("Please provide all necessary arguments! !givevp <name> <amount>")
+            return
+        player_name = args[1]
+        amount = int(args[2])
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        if character.account.is_online():
+            await ctx.send("Make sure the character is offline before giving vote points!")
+            return
+
+        embed = discord.Embed(
+            title="Vote Points",
+            color=self.get_server_color(),
+            description=f"Successfully gave {character.name} {format_num(amount)} vote points."
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        new_amount = amount + int(character.account.vp)
+        character.account.vp = new_amount
+        await ctx.send(embed=embed)
+
+    @commands.command(name='unban', pass_context=True)
+    @has_permissions(administrator=True)
+    async def unban(self, ctx):
+        args = ctx.message.content.split(" ")
+        if len(args) < 2:
+            await ctx.send("Please provide all necessary arguments! !unban <name>")
+            return
+        player_name = args[1]
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        embed = discord.Embed(
+            title="Unban",
+            color=self.get_server_color(),
+            description=f"Successfully unbanned {character.name}.\nPlease don't get yourself banned again! :)"
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        character.account.banned = 0
+        await ctx.send(embed=embed)
+
+    @commands.command(name='ban', pass_context=True)
+    @has_permissions(administrator=True)
+    async def ban(self, ctx):
+        args = ctx.message.content.split(" ")
+        if len(args) < 2:
+            await ctx.send("Please provide all necessary arguments! !ban <name>")
+            return
+        player_name = args[1]
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        if character.account.is_online():
+            await ctx.send("Make sure the character is offline before banning!")
+            return
+
+        embed = discord.Embed(
+            title="Ban",
+            color=self.get_server_color(),
+            description=f"Successfully banned {character.name}."
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        character.account.banned = 1
+        await ctx.send(embed=embed)
+
+
+def format_num(x):
+    return "{:,}".format(x)
 
 
 def setup(bot):
