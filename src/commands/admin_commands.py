@@ -159,10 +159,18 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
     @has_permissions(administrator=True)
     async def ban(self, ctx):
         args = ctx.message.content.split(" ")
-        if len(args) < 2:
-            await ctx.send("Please provide all necessary arguments! !ban <name>")
+        args_size = len(args)
+        if args_size < 3:
+            await ctx.send("Please provide all necessary arguments! !ban <name> <reason>")
             return
+
         player_name = args[1]
+        ban_reason = ""
+        index = 2
+
+        while index < args_size:
+            ban_reason += args[index] + " "
+            index += 1
 
         try:
             character = self.database.get_char_by_name(player_name)
@@ -182,6 +190,7 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
 
         character.account.banned = 1
+        character.account.ban_reason = ban_reason
         await ctx.send(embed=embed)
 
 
