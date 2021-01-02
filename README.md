@@ -8,7 +8,7 @@ Lapis accesses character and inventory attributes in [AzureMSv316](https://githu
 
 #### Current Status: **Release**  ![90%](https://progress-bar.dev/90)
 
-### Gallery
+## Gallery
   ![character](https://cdn.discordapp.com/attachments/631249406775132182/795031817891610644/c76d5804a42f63accb448e8a9e8bf157.png)
   
   ![help](https://cdn.discordapp.com/attachments/631249406775132182/795031808512098334/42b4365e6b819a088fc59d01d11ef27c.png)
