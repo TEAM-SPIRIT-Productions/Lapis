@@ -130,6 +130,36 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         character.account.vp = new_amount
         await ctx.send(embed=embed)
 
+    @commands.command(name='setname', pass_context=True)
+    @has_permissions(administrator=True)
+    async def set_name(self, ctx):
+        args = ctx.message.content.split(" ")
+        if len(args) < 3:
+            await ctx.send("Please provide all necessary arguments! !givevp <name> <new_name>")
+            return
+        player_name = args[1]
+        new_name = args[2]
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        if character.account.is_online():
+            await ctx.send("Make sure the character is offline before changing their names!")
+            return
+
+        embed = discord.Embed(
+            title="Name Change",
+            color=self.get_server_color(),
+            description=f"Successfully changed {character.name}'s name to {new_name}"
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        character.name = new_name
+        await ctx.send(embed=embed)
+
     @commands.command(name='unban', pass_context=True)
     @has_permissions(administrator=True)
     async def unban(self, ctx):
