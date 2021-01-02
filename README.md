@@ -6,8 +6,12 @@ Lapis is inspired by the [MapleDiscBot](https://github.com/Bratah123/MapleDiscBo
 Lapis accesses character and inventory attributes in [AzureMSv316](https://github.com/SoulGirlJP/AzureV316)-based databases using the [Lazuli API](https://team-spirit-productions.github.io/Lazuli/reference/lazuli/).  
 
 
-#### Current Status: **Early Development**  ![90%](https://progress-bar.dev/90)
+#### Current Status: **Release**  ![90%](https://progress-bar.dev/90)
 
+### Gallery
+  ![character](https://cdn.discordapp.com/attachments/631249406775132182/795031817891610644/c76d5804a42f63accb448e8a9e8bf157.png)
+  
+  ![help](https://cdn.discordapp.com/attachments/631249406775132182/795031808512098334/42b4365e6b819a088fc59d01d11ef27c.png)
 ## Documentation:
 Kindly direct any problems or questions to the [Issues](https://github.com/TEAM-SPIRIT-Productions/Lapis/issues) page.  
 You will need to generate your `VENV` prior to use. Refer to [Lazuli's Wiki](https://github.com/TEAM-SPIRIT-Productions/Lazuli/wiki/Technical-Details#step-1-generate-the-virtual-environment) for details on how to do so.  
