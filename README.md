@@ -20,6 +20,16 @@ Lapis accesses character and inventory attributes in [AzureMSv316](https://githu
 Kindly direct any problems or questions to the [Issues](https://github.com/TEAM-SPIRIT-Productions/Lapis/issues) page.  
 You will need to generate your `VENV` prior to use. Refer to [Lazuli's Wiki](https://github.com/TEAM-SPIRIT-Productions/Lazuli/wiki/Technical-Details#step-1-generate-the-virtual-environment) for details on how to do so.  
 
+## Configuration
+  ![config](https://media.discordapp.net/attachments/746519006961336370/795472281840517120/d2df4b78e7ef657d8c0e07076c1781ab.png?width=1003&height=348)
+  - Prior to launching the bot, please navigate to config.json found in the `src` folder.
+  - Here you will find various settings you have to fill out
+  - First you MUST fill out the BOT_TOKEN section by obtaining a bot token from the [Discord Developer Portal](https://discord.com/developers/docs/intro).
+  - The rest of the settings do not need to be filled out for it to work, however feel free to make the changes related to your server
+  - If you do not know what you are doing keep `"USE_DEFAULT_DB"` to true.
+    - If it is false, the settings below it would be used for ALL database calls
+  - If you configure `ADD_ROLE` to true, you HAVE to fill out `ROLE_TO_ADD` which is the role id.
+
 ## Technical Details
 *Inherited from Lazuli*
 |  | Target Minimum | Target Maximum |
