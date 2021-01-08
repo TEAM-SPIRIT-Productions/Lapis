@@ -67,11 +67,11 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         new_amount = amount + int(character.meso)
         try:
             character.meso = new_amount
+            await ctx.send(embed=embed)
         except Exception as e:
             print("Error encountered whilst setting mesos")
             if type(e) is ValueError:
                 await ctx.send(e.args[0])  # send failure message if meso value input invalid
-        await ctx.send(embed=embed)
 
     @commands.command(name='givedp', pass_context=True)
     @has_permissions(administrator=True)
@@ -103,11 +103,11 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         new_amount = amount + int(character.account.dp)
         try:
             character.account.dp = new_amount
+            await ctx.send(embed=embed)
         except Exception as e:
             print("Error encountered whilst setting dp")
             if type(e) is ValueError:
                 await ctx.send(e.args[0])  # send failure message if dp value input invalid
-        await ctx.send(embed=embed)
 
     @commands.command(name='givevp', pass_context=True)
     @has_permissions(administrator=True)
@@ -139,11 +139,11 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         new_amount = amount + int(character.account.vp)
         try:
             character.account.vp = new_amount
+            await ctx.send(embed=embed)
         except Exception as e:
             print("Error encountered whilst setting vp")
             if type(e) is ValueError:
                 await ctx.send(e.args[0])  # send failure message if vp value input invalid
-        await ctx.send(embed=embed)
 
     @commands.command(name='setname', pass_context=True)
     @has_permissions(administrator=True)
@@ -174,11 +174,11 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
 
         try:
             character.name = new_name
+            await ctx.send(embed=embed)
         except Exception as e:
             print("Error encountered whilst setting name")
             if type(e) is ValueError:
                 await ctx.send(e.args[0])  # send failure message if name input invalid
-        await ctx.send(embed=embed)
 
     @commands.command(name='unban', pass_context=True)
     @has_permissions(administrator=True)
