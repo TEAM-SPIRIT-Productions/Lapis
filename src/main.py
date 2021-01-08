@@ -12,6 +12,9 @@ from discord.ext.commands import has_permissions
 with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as f:
     config = json.load(f)
 
+intents = discord.Intents.default()
+intents.members = True
+
 bot = commands.Bot(command_prefix=config['COMMAND_PREFIX'])
 # remove the default help command so we can format it nicer
 bot.remove_command('help')
