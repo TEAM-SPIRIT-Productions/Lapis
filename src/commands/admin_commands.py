@@ -135,7 +135,7 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
     async def set_name(self, ctx):
         args = ctx.message.content.split(" ")
         if len(args) < 3:
-            await ctx.send("Please provide all necessary arguments! !givevp <name> <new_name>")
+            await ctx.send("Please provide all necessary arguments! !setname <name> <new_name>")
             return
         player_name = args[1]
         new_name = args[2]
