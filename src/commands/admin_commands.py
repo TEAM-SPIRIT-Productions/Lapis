@@ -65,8 +65,13 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
 
         new_amount = amount + int(character.meso)
-        character.meso = new_amount
-        await ctx.send(embed=embed)
+        try:
+            character.meso = new_amount
+            await ctx.send(embed=embed)
+        except Exception as e:
+            print("Error encountered whilst setting mesos")
+            if type(e) is ValueError:
+                await ctx.send(e.args[0])  # send failure message if meso value input invalid
 
     @commands.command(name='givedp', pass_context=True)
     @has_permissions(administrator=True)
@@ -96,8 +101,13 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
 
         new_amount = amount + int(character.account.dp)
-        character.account.dp = new_amount
-        await ctx.send(embed=embed)
+        try:
+            character.account.dp = new_amount
+            await ctx.send(embed=embed)
+        except Exception as e:
+            print("Error encountered whilst setting dp")
+            if type(e) is ValueError:
+                await ctx.send(e.args[0])  # send failure message if dp value input invalid
 
     @commands.command(name='givevp', pass_context=True)
     @has_permissions(administrator=True)
@@ -127,8 +137,13 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
 
         new_amount = amount + int(character.account.vp)
-        character.account.vp = new_amount
-        await ctx.send(embed=embed)
+        try:
+            character.account.vp = new_amount
+            await ctx.send(embed=embed)
+        except Exception as e:
+            print("Error encountered whilst setting vp")
+            if type(e) is ValueError:
+                await ctx.send(e.args[0])  # send failure message if vp value input invalid
 
     @commands.command(name='setname', pass_context=True)
     @has_permissions(administrator=True)
@@ -157,8 +172,13 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
             description=f"Successfully changed {character.name}'s name to {new_name}"
         ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
 
-        character.name = new_name
-        await ctx.send(embed=embed)
+        try:
+            character.name = new_name
+            await ctx.send(embed=embed)
+        except Exception as e:
+            print("Error encountered whilst setting name")
+            if type(e) is ValueError:
+                await ctx.send(e.args[0])  # send failure message if name input invalid
 
     @commands.command(name='unban', pass_context=True)
     @has_permissions(administrator=True)
