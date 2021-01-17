@@ -5,7 +5,7 @@ chardet==3.0.4
 discord.py==1.5.1
 idna==3.0
 idna-ssl==1.1.0
-lazuli==1.0.0
+lazuli==2.0.1
 multidict==4.7.6
 mysql-connector-python==8.0.22
 typing-extensions==3.7.4.3
