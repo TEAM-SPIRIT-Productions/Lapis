@@ -243,6 +243,62 @@ class AdminCommands(commands.Cog, name='AdminCommands'):
         character.account.ban_reason = ban_reason
         await ctx.send(embed=embed)
 
+    @commands.command(name='chardeepcopy', pass_context=True)
+    @has_permissions(administrator=True)
+    async def deep_copy_char(self, ctx):
+        args = ctx.message.content.split(" ")
+        args_size = len(args)
+        if args_size < 2:
+            await ctx.send("Please provide all necessary arguments: !chardeepcopy <character name>")
+            return
+
+        player_name = args[1]
+
+        try:
+            character = self.database.get_char_by_name(player_name)
+        except Exception as e:
+            await ctx.send("That character does not exist.")
+            print("Character does not exist error:", e)
+            return
+
+        embed = discord.Embed(
+            title="Character Deep Copy",
+            color=self.get_server_color(),
+            description=f"Fetching all attributes associated with {character.name}."
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        data = "".join(character.get_deep_copy())
+        embed.add_field(name="Attributes:", value=data, inline=True)
+        await ctx.send(embed=embed)
+
+    @commands.command(name='accdeepcopy', pass_context=True)
+    @has_permissions(administrator=True)
+    async def deep_copy_acc(self, ctx):
+        args = ctx.message.content.split(" ")
+        args_size = len(args)
+        if args_size < 2:
+            await ctx.send("Please provide all necessary arguments: !chardeepcopy <username>")
+            return
+
+        username = args[1]
+
+        try:
+            user = self.database.get_account_by_username(username)
+        except Exception as e:
+            await ctx.send("That account does not exist.")
+            print("Account does not exist error:", e)
+            return
+
+        embed = discord.Embed(
+            title="Account Deep Copy",
+            color=self.get_server_color(),
+            description=f"Fetching all attributes associated with {user.username}."
+        ).set_footer(text=self.config["SERVER_NAME"]).set_thumbnail(url=self.config["SERVER_IMG"])
+
+        data = "".join(user.get_deep_copy())
+        embed.add_field(name="Attributes:", value=data, inline=True)
+        await ctx.send(embed=embed)
+
 
 def format_num(x):
     return "{:,}".format(x)
