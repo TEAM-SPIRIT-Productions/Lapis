@@ -15,7 +15,7 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/config.json', 'r') as f
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix=config['COMMAND_PREFIX'])
+bot = commands.Bot(command_prefix=config['COMMAND_PREFIX'], intents=intents)
 # remove the default help command so we can format it nicer
 bot.remove_command('help')
 print("Loading various commands....")
