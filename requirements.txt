@@ -1,12 +1,14 @@
-aiohttp==3.6.3
+aiohttp==3.7.4
 async-timeout==3.0.1
 attrs==20.3.0
 chardet==3.0.4
-discord.py==1.5.1
+discord.py==1.6.0
 idna==3.0
 idna-ssl==1.1.0
-lazuli==2.0.1
+lazuli==2.2.1
 multidict==4.7.6
 mysql-connector-python==8.0.22
+protobuf==3.14.0
+six==1.15.0
 typing-extensions==3.7.4.3
 yarl==1.5.1
