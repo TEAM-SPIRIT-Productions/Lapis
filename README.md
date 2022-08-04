@@ -6,7 +6,8 @@ Lapis is inspired by the [MapleDiscBot](https://github.com/Bratah123/MapleDiscBo
 Lapis accesses character and inventory attributes in [AzureMSv316](https://github.com/SoulGirlJP/AzureV316)-based databases using the [Lazuli API](https://team-spirit-productions.github.io/Lazuli/reference/lazuli/).  
 
 
-#### Current Status: **Released!**
+#### Current Status: **Awaiting overhaul!**
+The [discord.py](https://github.com/Rapptz/discord.py) has breaking changes going from v1 to v2. This means that the entire Lapis project has to be re-written to accommodate these changes. Note that following the re-write, we will be targeting Python 3.10+.
 
 ## Usage Notes
 This project is licensed under the AGPL-3.0 license. This means you're free to modify and distribute it, for both private and commercial use, under the condition that the complete source code for derivative works be made available under the same license.
@@ -18,7 +19,7 @@ Note that when a modified version is used to provide a service over a network, t
 Following the release of the advisory (see above), we have updated dependencies to include the security patch(es).  
 #### If you cloned/downloaded an earlier version, please update ASAP.  
 
-*Note: `aiohttp` is a library used by `discord.py`, which is the basis for most Python-based bots for Discord, including `Lapis`*.  
+  
 ### To grab the updates
 1. Perform `git pull`
 2. Grab the new dependencies  
