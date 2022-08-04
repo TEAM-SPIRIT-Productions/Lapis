@@ -94,6 +94,36 @@ async def help_command(ctx):
     await ctx.send(embed=embed_msg)
 
 
+@bot.command(name='credit', pass_context=True)
+async def help_command(ctx):
+    """
+    Easter egg command that gives the source of Lapis
+    """
+    user_cog = bot.get_cog('UserCommands')
+    cmd_list = [command.name + "\n" for command in user_cog.get_commands()]
+    cmd_list_str = ""
+
+    for cmd in cmd_list:
+        cmd_list_str += cmd
+
+    embed_msg = discord.Embed(
+        title="Credits",
+        description="This bot is based on Lapis, an open-source Discord bot "
+                    "for MapleStory private servers. Lapis is built on Lazuli, "
+                    "an open-source Python library for interacting with Odin-like "
+                    "MapleStory databases. Both projects are proudly brought to "
+                    "you by Team SPIRIT.",
+        color=int(config['SERVER_COLOR'], 16) + 0x200
+    )
+    embed_msg.set_thumbnail(url=config['SERVER_IMG'])
+    embed_msg.add_field(name="Lapis", value="<https://github.com/TEAM-SPIRIT-Productions/Lapis>")
+    embed_msg.add_field(name="Lazuli", value="<https://github.com/TEAM-SPIRIT-Productions/Lazuli>")
+    embed_msg.add_field(name="Team SPIRIT", value="<https://github.com/TEAM-SPIRIT-Productions>")
+
+    embed_msg.set_footer(text=config['SERVER_NAME'])
+    await ctx.send(embed=embed_msg)
+
+
 def main():
     print("Loading bot...")
     bot.run(config['BOT_TOKEN'])
